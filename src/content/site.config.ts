@@ -181,9 +181,9 @@ export const siteConfig: SiteConfig = {
     "Santos Mota Engenharia LTDA",
     "Condomínio Porto Belo",
     "Ceasa",
-    "Empresa Fortaleza Ambiental",
-    "Empresa Contractor",
-    "Empresa Limpar",
+    "Fortaleza Ambiental",
+    "Contractor",
+    "Limpar",
   ], // ok (4.6), citação autorizada; os 5 últimos foram acrescentados pelo usuário em 21/10/2026. Passam em faixa contínua a partir de 5 nomes
   depoimentos: [], // PENDENTE 4.1
   google: null, // PENDENTE 4.2 (o cliente tem o perfil; faltam link e nota)
