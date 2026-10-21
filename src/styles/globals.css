@@ -85,6 +85,55 @@
   }
 }
 
+/* Faixa de clientes em rolagem contínua: ver ClientMarquee. A duração vem da quantidade de nomes. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.marquee-track {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+/* Só com mouse: no toque o :hover ficaria preso e a faixa pararia depois de um toque */
+@media (hover: hover) {
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-mask {
+    mask-image: none;
+  }
+
+  .marquee-track {
+    animation: none;
+    width: auto;
+  }
+
+  .marquee-copy {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .marquee-copy > li {
+    margin-right: 0;
+  }
+
+  .marquee-copy[aria-hidden="true"] {
+    display: none;
+  }
+}
+
 /* Motivo decorativo do sol: raios discretos em arco atrás do hero */
 .sun-rays {
   background:

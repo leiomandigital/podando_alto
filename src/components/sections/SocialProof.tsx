@@ -1,6 +1,6 @@
 import { ExternalLink, Quote } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ClientMarquee } from "@/components/shared/ClientMarquee";
 import { SectionContainer } from "@/components/shared/SectionContainer";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import type { Depoimento, SiteConfig, TextosSecao } from "@/content/site.types";
@@ -19,13 +19,8 @@ const SocialProof = ({ clients, testimonials, google, texts }: SocialProofProps)
     <SectionHeading id="clientes-titulo" eyebrow={texts.sobretitulo} title={texts.titulo} />
 
     {hasData(clients) && (
-      <div className="mb-10 flex flex-wrap items-center gap-3">
-        <p className="font-semibold">{texts.jaAtendemos}</p>
-        {clients.map((client) => (
-          <Badge key={client} variant="secondary" className="px-4 py-2 text-sm">
-            {client}
-          </Badge>
-        ))}
+      <div className="mb-10">
+        <ClientMarquee label={texts.jaAtendemos} items={clients} />
       </div>
     )}
 

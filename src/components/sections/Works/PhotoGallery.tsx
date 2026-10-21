@@ -9,13 +9,22 @@ interface PhotoGalleryProps {
 }
 
 const PhotoGallery = ({ images }: PhotoGalleryProps) => (
-  <Carousel showControls={images.length > 1}>
+  <Carousel showControls={images.length > 1} loop={images.length > 1}>
     {images.map((image) => (
       <CarouselItem key={image.src}>
         <Dialog>
           <DialogTrigger className="block w-full rounded-xl" aria-label={`Ampliar: ${image.alt}`}>
             <AspectRatio ratio={4 / 3} className="overflow-hidden rounded-xl">
-              <img src={image.src} alt={image.alt} width={image.largura} height={image.altura} loading="lazy" decoding="async" className="size-full object-cover" />
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={image.largura}
+                height={image.altura}
+                loading="lazy"
+                decoding="async"
+                className="size-full object-cover"
+                style={image.posicao ? { objectPosition: image.posicao } : undefined}
+              />
               <Watermark />
             </AspectRatio>
           </DialogTrigger>

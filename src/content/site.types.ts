@@ -19,6 +19,9 @@ export interface ImagemConfig {
   alt: string;
   largura: number;
   altura: number;
+  // Parte da foto que fica visível quando o site corta para o formato do campo, como "50% 20%" (horizontal vertical).
+  // 0% é o início da foto (esquerda ou topo), 100% o fim. Sem o campo, o corte é no centro.
+  posicao?: string;
 }
 
 export interface AntesDepoisConfig {
@@ -83,6 +86,8 @@ export interface SiteConfig {
     slogan: string;
     proposta: string;
     responsavel: string | null;
+    cargoResponsavel: string | null;
+    formacaoResponsavel: string | null;
     tempoAtuacao: string | null;
     descritor: string | null;
     historia: string | null;

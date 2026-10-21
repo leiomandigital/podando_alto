@@ -6,7 +6,9 @@ export const siteConfig: SiteConfig = {
     nome: "Podando Alto",
     slogan: "Qualidade e garantia de um bom serviço", // ok (1.5)
     proposta: "Melhorando a sua qualidade de vida e preservando a natureza.", // ok (1.4)
-    responsavel: "Bruno Cardoso", // inferido, confirmar cargo
+    responsavel: "Bruno Cardoso", // ok
+    cargoResponsavel: "Arborista responsável", // informado pelo usuário em 21/10/2026
+    formacaoResponsavel: "Treinamento especializado em escalada em árvores", // tirado da história (Arbolab); confirmar com o cliente
     tempoAtuacao: "3 anos", // ok (1.2; ideal: ano de fundação)
     descritor: "Jardinagem e poda", // informado com o CNPJ; confirmar
     historia:
@@ -173,7 +175,16 @@ export const siteConfig: SiteConfig = {
       descricao: "Responsável pelos projetos de paisagismo.",
     },
   ], // material enviado em 20/10/2026 (3.5 e 2.1); sem contato nem dados pessoais
-  clientesCitaveis: ["CODEG", "Condomínio Village dos Pássaros", "Santos Mota Engenharia LTDA"], // ok (4.6), citação autorizada
+  clientesCitaveis: [
+    "CODEG – Companhia de Melhoramentos e Desenvolvimento Urbano de Guarapari",
+    "Condomínio Village dos Pássaros",
+    "Santos Mota Engenharia LTDA",
+    "Condomínio Porto Belo",
+    "Ceasa",
+    "Empresa Fortaleza Ambiental",
+    "Empresa Contractor",
+    "Empresa Limpar",
+  ], // ok (4.6), citação autorizada; os 5 últimos foram acrescentados pelo usuário em 21/10/2026. Passam em faixa contínua a partir de 5 nomes
   depoimentos: [], // PENDENTE 4.1
   google: null, // PENDENTE 4.2 (o cliente tem o perfil; faltam link e nota)
   redes: { instagram: "https://www.instagram.com/podando.alto.arborismo/", facebook: null }, // ok (4.3); Facebook PENDENTE
@@ -210,14 +221,60 @@ export const siteConfig: SiteConfig = {
       { titulo: "Serviço executado", texto: "Serviço executado com garantia e nota fiscal." }, // 3.6
     ],
   },
+  // COMO INSERIR FOTOS
+  // 1. Envie o arquivo para a pasta public/fotos/ (ex.: public/fotos/obra-nova.jpg).
+  // 2. Troque o null do campo abaixo por: { src: "/fotos/obra-nova.jpg", alt: "descrição da foto", largura: 960, altura: 720 }
+  //    (largura e altura são os pixels reais da foto, nas propriedades do arquivo; servem para a página não "pular" ao carregar).
+  // Em listas (galeria, antesDepois, videos), cada foto é um item entre as chaves [ ], separados por vírgula.
+  // Envie a foto sem marca d'água: o site aplica o selo da Podando Alto. Fotos de celular devem ser reduzidas
+  // para no máximo 1600 px de largura (cerca de 300 KB), senão a página fica lenta. O site corta a foto para
+  // caber no formato indicado em cada campo; deixe o assunto principal no centro.
+  // A foto do hero e a do Bruno já estão recortadas (4:3 e 4:5). Na galeria e na faixa do caminhão as fotos estão inteiras:
+  // a lista mostra o recorte 4:3 e, ao clicar, abre a foto inteira. O campo opcional posicao escolhe a parte que aparece
+  // no recorte: "50% 20%" é centro na horizontal e perto do topo na vertical (0% = início da foto, 100% = fim).
   midia: {
     logo: null, // PENDENTE 5: original em vetor ou PNG maior (hoje: src/assets/logo.png, 402x300, fundo transparente)
-    hero: null,
-    fotoResponsavel: null,
-    fotoCaminhao: null,
-    galeria: [],
-    antesDepois: [],
-    videos: [],
+    hero: {
+      src: "/fotos/hero.jpg",
+      alt: "Arborista em escalada no topo de um tronco, com capacete, harness e motosserra",
+      largura: 733,
+      altura: 550,
+    }, // 1ª tela, ao lado do título (abaixo do texto no celular): horizontal, formato 4:3
+    fotoResponsavel: {
+      src: "/fotos/bruno.jpg",
+      alt: "Bruno Cardoso, arborista responsável, com equipamento de escalada em pé sobre um tronco cortado",
+      largura: 960,
+      altura: 1200,
+    }, // Quem somos, no destaque do Bruno: retrato em pé, formato 4:5; confirmar que é o Bruno
+    fotoCaminhao: {
+      src: "/fotos/arvore-grande-cesto-aereo.jpg",
+      alt: "Caminhão com cesto aéreo ao lado de uma árvore de grande porte, com cones de sinalização na rua",
+      largura: 828,
+      altura: 536,
+      posicao: "50% 88%",
+    }, // Diferenciais, faixa larga abaixo dos cards: formato 21:9 (a mesma foto também está na galeria)
+    galeria: [
+      { src: "/fotos/corte-de-galho.jpg", alt: "Arborista cortando um galho grosso com motosserra no alto de uma árvore", largura: 740, altura: 1269, posicao: "50% 52%" },
+      { src: "/fotos/escalada-eucalipto.jpg", alt: "Arborista pendurado em corda no tronco de um eucalipto, com motosserra presa ao cinto", largura: 828, altura: 1031, posicao: "50% 80%" },
+      { src: "/fotos/arvore-grande-cesto-aereo.jpg", alt: "Árvore de grande porte em uma rua, com caminhão de cesto aéreo e cones de sinalização", largura: 828, altura: 536, posicao: "35% 50%" },
+      { src: "/fotos/limpeza-triturador.jpg", alt: "Profissional recolhendo galhos cortados, com triturador ao fundo", largura: 960, altura: 1280, posicao: "50% 57%" },
+      { src: "/fotos/avaliacao-palmeira.jpg", alt: "Arborista com equipamento de escalada avaliando uma palmeira antes do serviço", largura: 739, altura: 1033, posicao: "50% 77%" },
+      { src: "/fotos/remocao-palmeira.jpg", alt: "Troncos de palmeira cortados em toras, com motosserra no chão", largura: 960, altura: 1280, posicao: "50% 71%" },
+      { src: "/fotos/escalada-tronco.jpg", alt: "Arborista no topo de um tronco cortado, com capacete, protetor auricular, harness e motosserra presa ao cinto", largura: 733, altura: 812, posicao: "50% 27%" },
+      { src: "/fotos/arborista-tronco.jpg", alt: "Arborista com equipamento de escalada completo, em pé sobre um tronco cortado", largura: 960, altura: 1280, posicao: "50% 16%" },
+      { src: "/fotos/rede-eletrica.jpg", alt: "Arborista no topo de um tronco, perto dos fios de energia, durante um corte em altura", largura: 740, altura: 823, posicao: "50% 0%" },
+      { src: "/fotos/cesto-aereo-copa.jpg", alt: "Trabalhador no cesto aéreo de um caminhão, podando uma árvore de copa grande", largura: 900, altura: 1067, posicao: "50% 48%" },
+      { src: "/fotos/uniforme-costas.jpg", alt: "Arborista de costas, com uniforme e cordas de escalada, preparando o serviço na calçada", largura: 720, altura: 1280, posicao: "50% 61%" },
+      { src: "/fotos/equipamento-protecao.jpg", alt: "Arborista de capacete, óculos, protetor auricular e máscara, com o punho fechado", largura: 962, altura: 1280, posicao: "50% 36%" },
+      { src: "/fotos/silhueta-copa.jpg", alt: "Silhueta de um arborista subindo em uma árvore seca contra o céu azul", largura: 828, altura: 828, posicao: "50% 48%" },
+      { src: "/fotos/escalada-copa.jpg", alt: "Arborista de uniforme verde e amarelo trabalhando em um galho grosso, com galhos já cortados", largura: 755, altura: 1095, posicao: "50% 36%" },
+      { src: "/fotos/topo-arvore-seca.jpg", alt: "Arborista no topo de uma árvore seca, com cordas de segurança, contra o céu azul", largura: 960, altura: 720 },
+      { src: "/fotos/motosserra-toco.jpg", alt: "Motosserra laranja apoiada em um toco, em um terreno com árvores cortadas", largura: 1280, altura: 960 },
+      { src: "/fotos/escalada-mata.jpg", alt: "Dois arboristas com equipamento de escalada ao pé de uma árvore, enquanto outra pessoa fotografa", largura: 960, altura: 1280, posicao: "50% 71%" },
+      { src: "/fotos/caminhao-guindaste.jpg", alt: "Caminhão com guindaste ao lado de uma árvore com galhos cortados", largura: 900, altura: 529, posicao: "100% 50%" },
+    ], // Trabalhos > Fotos, carrossel que amplia ao clicar: recorte 4:3, foto inteira ao ampliar
+    antesDepois: [], // Trabalhos > Antes e depois: { antes: {...}, depois: {...}, legenda: "texto" }, mesmo enquadramento nas duas, formato 4:3
+    videos: [], // Trabalhos > Vídeos: { src: "/videos/obra.mp4", poster: {...}, legenda: "texto" }, formato 16:9
   }, // PENDENTE 5; todas as fotos recebem a logo como marca d'água (5.2)
   faq: [
     { pergunta: "Como funciona o orçamento?", resposta: "O orçamento é feito em visita técnica." }, // 7.3
@@ -265,7 +322,7 @@ export const siteConfig: SiteConfig = {
     },
     "quem-somos": {
       titulo: "Quem somos",
-      atuacao: "Atuamos há {tempo}.", // 1.2
+      atuacao: "Atuamos há {tempo}", // 1.2
       historia: "Nossa história",
       equipe: "Acompanhamento técnico",
     },

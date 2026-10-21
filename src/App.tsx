@@ -56,8 +56,11 @@ const renderSection = (id: SectionId): ReactNode => {
       return empresa.responsavel ? (
         <About
           responsible={empresa.responsavel}
+          role={empresa.cargoResponsavel}
+          formation={empresa.formacaoResponsavel}
           photo={midia.fotoResponsavel}
           yearsActive={empresa.tempoAtuacao}
+          treesPruned={siteConfig.numeros.arvoresPodadas}
           valueProposition={empresa.proposta}
           story={empresa.historia}
           team={siteConfig.equipeTecnica}

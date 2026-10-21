@@ -34,6 +34,7 @@ const MediaSlot = ({ image, expectedFile, ratio, priority = false, className }: 
         decoding={priority ? undefined : "async"}
         fetchPriority={priority ? "high" : undefined}
         className="size-full object-cover"
+        style={image.posicao ? { objectPosition: image.posicao } : undefined}
       />
       <Watermark />
     </AspectRatio>
