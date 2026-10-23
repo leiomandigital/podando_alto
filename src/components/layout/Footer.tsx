@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import type { Endereco, SiteConfig } from "@/content/site.types";
 import { formatAddress, formatWhatsAppDisplay } from "@/lib/format";
 import type { MenuItem } from "@/lib/sections";
+import { trackWhatsAppClick } from "@/lib/tracking";
 import { buildCredentialsLine } from "@/lib/trust";
 import { hasData } from "@/lib/visibility";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -38,7 +39,11 @@ const Footer = ({ empresa, credenciais, contato, endereco, redes, menuItems }: F
       <div className="flex flex-col text-sm">
         <h2 className="mb-1 text-base">Contato</h2>
         {hasData(contato.whatsapp) && (
-          <a href={buildWhatsAppUrl(contato.mensagemPadrao)} className={LINK_CLASS}>
+          <a
+            href={buildWhatsAppUrl(contato.mensagemPadrao)}
+            className={LINK_CLASS}
+            onClick={() => trackWhatsAppClick({ cta_location: "rodape" })}
+          >
             WhatsApp: {formatWhatsAppDisplay(contato.whatsapp)}
           </a>
         )}

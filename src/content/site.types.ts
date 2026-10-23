@@ -5,7 +5,8 @@ export type CtaLocation =
   | "diferenciais"
   | "final"
   | "flutuante"
-  | "formulario";
+  | "formulario"
+  | "rodape";
 
 export interface Servico {
   id: string;
