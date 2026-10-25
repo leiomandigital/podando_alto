@@ -13,6 +13,7 @@ export interface Servico {
   nome: string; // curto: entra na mensagem do WhatsApp
   grupo: "destaque" | "arborismo" | "paisagismo";
   descricao: string | null;
+  oculto?: boolean; // true tira o card do site (e da lista do formulário) sem apagar o serviço
 }
 
 export interface ImagemConfig {
@@ -103,6 +104,7 @@ export interface SiteConfig {
     garantia: string | null;
     prazoGarantia: string | null;
     notaFiscal: boolean;
+    semAcidentes: boolean; // nenhum acidente de trabalho nos serviços prestados
   };
   numeros: { arvoresPodadas: string | null };
   hero: { tituloBase: string; ctaPrimario: string; ctaSecundario: string };

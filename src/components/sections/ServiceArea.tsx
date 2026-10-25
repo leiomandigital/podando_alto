@@ -1,4 +1,4 @@
-import { Clock, MapPin, Navigation } from "lucide-react";
+import { Clock, Map as MapIcon, MapPin, Navigation } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionContainer } from "@/components/shared/SectionContainer";
@@ -24,37 +24,41 @@ const ServiceArea = ({ area, texts }: ServiceAreaProps) => (
         </li>
       ))}
     </ul>
-    {(hasData(area.deslocamento) || hasData(area.endereco) || hasData(area.horario)) && (
-      <Card className="max-w-xl">
-        <CardContent className="gap-3">
-          {hasData(area.deslocamento) && (
-            <p className="flex items-start gap-3">
-              <Navigation className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />
-              {area.deslocamento}
-            </p>
-          )}
-          {area.endereco && (
-            <p className="flex items-start gap-3">
-              <MapPin className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />
-              <span>
-                {formatAddress(area.endereco)}{" "}
-                <a href={buildMapSearchUrl(area.endereco)} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline">
-                  {texts.mapa}
-                </a>
-              </span>
-            </p>
-          )}
-          {hasData(area.horario) && (
-            <p className="flex items-start gap-3">
-              <Clock className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />
-              <span>
-                {texts.horario} {area.horario}
-              </span>
-            </p>
-          )}
-        </CardContent>
-      </Card>
-    )}
+    <Card className="max-w-xl">
+      <CardContent className="gap-3">
+        <p className="flex items-start gap-3">
+          <MapIcon className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />
+          <span>
+            <strong>{texts.todoEstado}</strong> {texts.todoEstadoDetalhe}
+          </span>
+        </p>
+        {hasData(area.deslocamento) && (
+          <p className="flex items-start gap-3">
+            <Navigation className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />
+            {area.deslocamento}
+          </p>
+        )}
+        {area.endereco && (
+          <p className="flex items-start gap-3">
+            <MapPin className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />
+            <span>
+              {formatAddress(area.endereco)}{" "}
+              <a href={buildMapSearchUrl(area.endereco)} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline">
+                {texts.mapa}
+              </a>
+            </span>
+          </p>
+        )}
+        {hasData(area.horario) && (
+          <p className="flex items-start gap-3">
+            <Clock className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />
+            <span>
+              {texts.horario} {area.horario}
+            </span>
+          </p>
+        )}
+      </CardContent>
+    </Card>
   </SectionContainer>
 );
 

@@ -23,7 +23,9 @@ import { buildTrustItems } from "@/lib/trust";
 const Works = lazy(() => import("@/components/sections/Works/Works").then((module) => ({ default: module.Works })));
 
 const renderSection = (id: SectionId): ReactNode => {
-  const { empresa, hero, servicos, textos, midia } = siteConfig;
+  const { empresa, hero, textos, midia } = siteConfig;
+  // Serviço com oculto: true some do site e do formulário; a grade de 3 colunas fecha certinho com 6 cards
+  const servicos = siteConfig.servicos.filter((service) => !service.oculto);
   switch (id) {
     case "hero":
       return (

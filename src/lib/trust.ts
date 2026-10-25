@@ -1,7 +1,7 @@
 import type { SiteConfig } from "@/content/site.types";
 import { hasData } from "./visibility";
 
-export type TrustIconKey = "arvores" | "tempo" | "crea" | "tecnico" | "seguranca" | "nota";
+export type TrustIconKey = "arvores" | "tempo" | "crea" | "tecnico" | "seguranca" | "sem-acidentes" | "nota";
 
 export interface TrustItemData {
   id: TrustIconKey;
@@ -23,6 +23,7 @@ export const buildTrustItems = ({ numeros, empresa, credenciais }: SiteConfig): 
     credenciais.crea ? { id: "crea", text: "Empresa cadastrada no CREA" } : null,
     hasData(credenciais.responsavelTecnico) ? { id: "tecnico", text: `${credenciais.responsavelTecnico} responsável` } : null,
     credenciais.segurancaDoTrabalho ? { id: "seguranca", text: credenciais.segurancaDoTrabalho } : null,
+    credenciais.semAcidentes ? { id: "sem-acidentes", text: "Nenhum acidente de trabalho nos serviços" } : null,
     invoiceAndWarranty ? { id: "nota", text: invoiceAndWarranty } : null,
   ];
   return items.filter((item): item is TrustItemData => item !== null);

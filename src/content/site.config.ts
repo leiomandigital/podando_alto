@@ -24,6 +24,7 @@ export const siteConfig: SiteConfig = {
     garantia: "Garantia do serviço", // ok (3.4)
     prazoGarantia: null, // PENDENTE 3.4
     notaFiscal: true, // ok (3.6)
+    semAcidentes: true, // informado pelo usuário em 25/10/2026: nenhum acidente de trabalho nos serviços prestados
   },
   numeros: { arvoresPodadas: "+2.000" }, // ok (4.5)
   hero: {
@@ -66,6 +67,7 @@ export const siteConfig: SiteConfig = {
       id: "destoca",
       nome: "Destoca",
       grupo: "arborismo",
+      oculto: true, // card escondido até o cliente enviar as informações; para voltar, apague esta linha
       descricao:
         "Remoção do toco que fica após o corte da árvore, liberando o espaço para novo plantio ou uso da área.",
     },
@@ -139,8 +141,9 @@ export const siteConfig: SiteConfig = {
     {
       id: "seguranca",
       titulo: "Segurança no serviço",
-      texto: "Acompanhamento técnico de Engenheira de Segurança do Trabalho, com foco na prevenção de riscos ocupacionais.",
-    }, // 9.5
+      texto:
+        "Acompanhamento técnico de Engenheira de Segurança do Trabalho, com foco na prevenção de riscos ocupacionais. Nenhum acidente de trabalho nos serviços prestados.",
+    }, // 9.5; última frase informada pelo usuário em 25/10/2026
     {
       id: "garantia",
       titulo: "Garantia do serviço",
@@ -184,16 +187,15 @@ export const siteConfig: SiteConfig = {
     "Fortaleza Ambiental",
     "Contractor",
     "Limpar",
-  ], // ok (4.6), citação autorizada; os 5 últimos foram acrescentados pelo usuário em 21/10/2026. Passam em faixa contínua a partir de 5 nomes
+    "Corpus",
+  ], // ok (4.6), citação autorizada; os 6 últimos foram acrescentados pelo usuário em 21 e 25/10/2026. Passam em faixa contínua a partir de 5 nomes
   depoimentos: [], // PENDENTE 4.1
   google: null, // PENDENTE 4.2 (o cliente tem o perfil; faltam link e nota)
   redes: { instagram: "https://www.instagram.com/podando.alto.arborismo/", facebook: null }, // ok (4.3); Facebook PENDENTE
   regiao: {
     cidades: [
+      "Grande Vitória", // no lugar de Vitória, Vila Velha, Serra, Cariacica e Viana (pedido do usuário em 25/10/2026)
       "Aracruz",
-      "Serra",
-      "Vitória",
-      "Vila Velha",
       "Guarapari",
       "Domingos Martins",
       "Anchieta",
@@ -347,7 +349,9 @@ export const siteConfig: SiteConfig = {
     regiao: {
       sobretitulo: "Região",
       titulo: "Onde atendemos",
-      subtitulo: "Atendemos as cidades e regiões abaixo.",
+      subtitulo: "Estas são as nossas cidades principais de atendimento.",
+      todoEstado: "Atendemos todo o Espírito Santo.",
+      todoEstadoDetalhe: "Fora das cidades principais, o atendimento é combinado conforme o orçamento.",
       horario: "Atendimento",
       mapa: "Ver no mapa",
     },
